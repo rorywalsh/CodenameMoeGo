@@ -83,7 +83,6 @@ class GameScene extends Phaser.Scene {
         if (this.keys.A.isDown) {
             this.moe.setVelocityX(-3);
             this.moe.anims.play('moeLeft', true);
-            console.log(distance);
             if (distance < 300) {
                 this.june.setVelocityX(-3);
                 this.june.anims.play('juneLeft', true);
