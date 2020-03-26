@@ -15,7 +15,7 @@ class GameScene extends Phaser.Scene {
     create() {
         this.matter.world.setBounds(0, 0, 16000, 1000);
         this.cameras.main.setBounds(0, 0, 16000, 1000);
-        this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
+        // this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
 
         this.isMoeTouchingGround = false;
         this.isJuneTouchingObstacle = false;
@@ -41,7 +41,7 @@ class GameScene extends Phaser.Scene {
 
 
 
-        LevelData.buildGround(this);
+        LevelData.buildGround(this, 25);
         // this.addObstacle(200, 460);
 
 
@@ -109,8 +109,8 @@ class GameScene extends Phaser.Scene {
             this.isMoeTouchingGround = false;
         }
 
-        //this.cameras.main.scrollX = this.moe.x - 500;
-        // this.cameras.main.scrollY = this.moe.y;
+        this.cameras.main.scrollX = this.moe.x - 500;
+        this.cameras.main.scrollY = this.moe.y;
 
     }
 
@@ -169,6 +169,8 @@ var config = {
         default: 'matter',
         matter: {
             debug: true,
+            lineColor: 'rgb(255, 0, 0)',
+
             enableSleeping: true
         }
     },
