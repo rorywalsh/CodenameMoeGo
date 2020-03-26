@@ -13,10 +13,15 @@ class GameScene extends Phaser.Scene {
 
 
     create() {
-        this.matter.world.setBounds(0, 0, 16000, 800);
+        this.matter.world.setBounds(0, 0, 16000, 1000);
+        this.cameras.main.setBounds(0, 0, 16000, 1000);
+        this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
+
         this.isMoeTouchingGround = false;
         this.isJuneTouchingObstacle = false;
-        this.gameWorld = this.add.image(8000, 400, 'gameWorld').setDepth(1);
+
+        // this.gameWorld.setDisplayOrigin(0, 0);
+
 
         this.moe = this.matter.add.sprite(300, 10, 'Moe', 8, { label: 'Moe' });
         this.moe.setScale(.6);
@@ -34,18 +39,18 @@ class GameScene extends Phaser.Scene {
         this.width = 930;
         this.height = 600;
 
-        this.cameras.main.setBounds(0, 0, 20000, 1000);
-
-        LevelData.buildGround(this, 150);
-        this.addObstacle(200, 460);
 
 
-        this.matter.world.on('collisionactive', function (event, bodyA, bodyB) {
+        LevelData.buildGround(this);
+        // this.addObstacle(200, 460);
+
+
+        this.matter.world.on('collisionactive', function(event, bodyA, bodyB) {
             if (this.checkBodies(bodyA, bodyB, "Moe", "Ground"))
                 this.isMoeTouchingGround = true;
             else
                 this.isMoeTouchingGround = true;
-            
+
             if (this.checkBodies(bodyA, bodyB, "June", "Obstacle"))
                 this.isJuneTouchingObstacle = true;
             else
@@ -58,8 +63,8 @@ class GameScene extends Phaser.Scene {
     }
 
     checkBodies(bodyA, bodyB, label1, label2) {
-        if ((bodyA.label == label1 && bodyB.label == label2)
-            || (bodyB.label == label1 && bodyA.label == label2))
+        if ((bodyA.label == label1 && bodyB.label == label2) ||
+            (bodyB.label == label1 && bodyA.label == label2))
             return true;
 
         return false;
@@ -84,8 +89,7 @@ class GameScene extends Phaser.Scene {
                 this.june.anims.play('juneLeft', true);
             }
 
-        }
-        else if (this.keys.D.isDown) {
+        } else if (this.keys.D.isDown) {
             this.moe.setVelocityX(3);
             this.moe.anims.play('moeRight', true);
             if (distance < 300) {
@@ -94,8 +98,7 @@ class GameScene extends Phaser.Scene {
                     this.june.anims.play('juneRight', true);
                 }
             }
-        }
-        else {
+        } else {
             this.moe.anims.play('moeTurn');
             this.june.anims.play('juneTurn');
             //this.moe.setVelocityX(0); 
@@ -106,8 +109,8 @@ class GameScene extends Phaser.Scene {
             this.isMoeTouchingGround = false;
         }
 
-        this.cameras.main.scrollX = this.moe.x - 500;
-        this.cameras.main.scrollY = this.moe.y;
+        //this.cameras.main.scrollX = this.moe.x - 500;
+        // this.cameras.main.scrollY = this.moe.y;
 
     }
 
@@ -159,6 +162,8 @@ class GameScene extends Phaser.Scene {
 //basic config for game
 var config = {
     type: Phaser.AUTO,
+    width: 16000,
+    height: 1000,
     backgroundColor: 'rgb(255, 255, 255)',
     physics: {
         default: 'matter',
