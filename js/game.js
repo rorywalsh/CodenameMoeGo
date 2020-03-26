@@ -15,7 +15,7 @@ class GameScene extends Phaser.Scene {
     create() {
         this.matter.world.setBounds(0, 0, 16000, 1000);
         this.cameras.main.setBounds(0, 0, 16000, 1000);
-        // this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
+        this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
 
         this.isMoeTouchingGround = false;
         this.isJuneTouchingObstacle = false;
