@@ -110,7 +110,7 @@ class GameScene extends Phaser.Scene {
         }
 
         this.cameras.main.scrollX = this.moe.x - 500;
-        this.cameras.main.scrollY = this.moe.y;
+        this.cameras.main.scrollY = this.moe.y - 200;
 
     }
 
@@ -162,8 +162,8 @@ class GameScene extends Phaser.Scene {
 //basic config for game
 var config = {
     type: Phaser.AUTO,
-    width: 16000,
-    height: 1000,
+    width: 800,
+    height: 600,
     backgroundColor: 'rgb(255, 255, 255)',
     physics: {
         default: 'matter',
