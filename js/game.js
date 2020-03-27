@@ -6,22 +6,14 @@ class GameScene extends Phaser.Scene {
 
     //https://rorywalsh.github.io/codenamemoego/assets/MoeWalk.png
     preload() {
-        var progress = this.add.graphics();
-
-        this.load.on('progress', function(value) {
-            progress.clear();
-            progress.fillStyle(0xffffff, 1);
-            progress.fillRect(0, 270, 800 * value, 60);
-
-        });
-
         this.load.on('complete', function() {
-            progress.destroy();
+            console.log("loading complete");
         });
 
         this.load.spritesheet('Moe', 'assets/MoeWalk.png', { frameWidth: 63, frameHeight: 96 });
         this.load.spritesheet('June', 'assets/JuneWalk.png', { frameWidth: 77, frameHeight: 96 });
         this.load.image('gameWorld', 'assets/gameWorldLowRes.png');
+
     }
 
 
