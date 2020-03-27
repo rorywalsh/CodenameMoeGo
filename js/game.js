@@ -34,7 +34,6 @@ class GameScene extends Phaser.Scene {
         this.isMoeTouchingGround = false;
         this.isJuneTouchingObstacle = false;
 
-        this.load.on('complete', function() { text.text = "Loading complete"; });
         // this.gameWorld.setDisplayOrigin(0, 0);
 
 
