@@ -6,6 +6,19 @@ class GameScene extends Phaser.Scene {
 
     //https://rorywalsh.github.io/codenamemoego/assets/MoeWalk.png
     preload() {
+        var progress = this.add.graphics();
+
+        this.load.on('progress', function(value) {
+            progress.clear();
+            progress.fillStyle(0xffffff, 1);
+            progress.fillRect(0, 270, 800 * value, 60);
+
+        });
+
+        this.load.on('complete', function() {
+            progress.destroy();
+        });
+
         this.load.spritesheet('Moe', 'assets/MoeWalk.png', { frameWidth: 63, frameHeight: 96 });
         this.load.spritesheet('June', 'assets/JuneWalk.png', { frameWidth: 77, frameHeight: 96 });
         this.load.image('gameWorld', 'assets/gameWorldLowRes.png');
@@ -13,6 +26,7 @@ class GameScene extends Phaser.Scene {
 
 
     create() {
+
         this.matter.world.setBounds(0, 0, 16000, 1000);
         this.cameras.main.setBounds(0, 0, 16000, 1000);
         this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
@@ -20,6 +34,7 @@ class GameScene extends Phaser.Scene {
         this.isMoeTouchingGround = false;
         this.isJuneTouchingObstacle = false;
 
+        this.load.on('complete', function() { text.text = "Loading complete"; });
         // this.gameWorld.setDisplayOrigin(0, 0);
 
 

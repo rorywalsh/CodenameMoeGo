@@ -26,13 +26,7 @@
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         };
-
-        if (window.mobilecheck() == true) {
-            setTimeout(function() {
-                var game = new Phaser.Game(config);
-            }, 15000)
-        } else
-            var game = new Phaser.Game(config);
+        var game = new Phaser.Game(config);
     </script>
 </body>
 
