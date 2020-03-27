@@ -6,8 +6,9 @@ class GameScene extends Phaser.Scene {
 
     //https://rorywalsh.github.io/codenamemoego/assets/MoeWalk.png
     preload() {
+        console.log("preload method called");
         this.load.on('complete', function() {
-            console.log("loading complete");
+            console.log("assets have been loaded");
         });
 
         this.load.spritesheet('Moe', 'assets/MoeWalk.png', { frameWidth: 63, frameHeight: 96 });
@@ -18,7 +19,7 @@ class GameScene extends Phaser.Scene {
 
 
     create() {
-
+        console.log("created method called");
         this.matter.world.setBounds(0, 0, 16000, 1000);
         this.cameras.main.setBounds(0, 0, 16000, 1000);
         this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
