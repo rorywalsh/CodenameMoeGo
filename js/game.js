@@ -20,53 +20,53 @@ class GameScene extends Phaser.Scene {
 
     create() {
         console.log("created method called");
-        this.matter.world.setBounds(0, 0, 16000, 1000);
+        // this.matter.world.setBounds(0, 0, 16000, 1000);
         this.cameras.main.setBounds(0, 0, 16000, 1000);
-        this.gameWorld = this.add.image(8000, 500, 'gameWorld').setDepth(1);
+        this.gameWorld = this.add.image(8000, 0, 'gameWorld').setDepth(1);
 
-        this.isMoeTouchingGround = false;
-        this.isJuneTouchingObstacle = false;
+        // this.isMoeTouchingGround = false;
+        // this.isJuneTouchingObstacle = false;
 
-        // this.gameWorld.setDisplayOrigin(0, 0);
-
-
-        this.moe = this.matter.add.sprite(300, 10, 'Moe', 8, { label: 'Moe' });
-        this.moe.setScale(.6);
-        this.moe.setMass(10);
-        this.moe.setBounce(0.1);
-        this.moe.setFixedRotation(true);
+        // // this.gameWorld.setDisplayOrigin(0, 0);
 
 
-        this.june = this.matter.add.sprite(40, 10, 'June', 8, { label: 'June' });
-        this.june.setScale(.4);
-        this.june.setMass(.01);
-        this.june.setBounce(0.1);
-        this.june.setFixedRotation(true);
-
-        this.width = 930;
-        this.height = 600;
+        // this.moe = this.matter.add.sprite(300, 10, 'Moe', 8, { label: 'Moe' });
+        // this.moe.setScale(.6);
+        // this.moe.setMass(10);
+        // this.moe.setBounce(0.1);
+        // this.moe.setFixedRotation(true);
 
 
+        // this.june = this.matter.add.sprite(40, 10, 'June', 8, { label: 'June' });
+        // this.june.setScale(.4);
+        // this.june.setMass(.01);
+        // this.june.setBounce(0.1);
+        // this.june.setFixedRotation(true);
 
-        LevelData.buildGround(this, 25);
-        // this.addObstacle(200, 460);
+        // this.width = 930;
+        // this.height = 600;
 
 
-        this.matter.world.on('collisionactive', function(event, bodyA, bodyB) {
-            if (this.checkBodies(bodyA, bodyB, "Moe", "Ground"))
-                this.isMoeTouchingGround = true;
-            else
-                this.isMoeTouchingGround = true;
 
-            if (this.checkBodies(bodyA, bodyB, "June", "Obstacle"))
-                this.isJuneTouchingObstacle = true;
-            else
-                this.isJuneTouchingObstacle = false;
+        // LevelData.buildGround(this, 25);
+        // // this.addObstacle(200, 460);
 
-        }, this);
 
-        this.keys = this.input.keyboard.addKeys('W,S,A,D,B');
-        this.createAnimations();
+        // this.matter.world.on('collisionactive', function(event, bodyA, bodyB) {
+        //     if (this.checkBodies(bodyA, bodyB, "Moe", "Ground"))
+        //         this.isMoeTouchingGround = true;
+        //     else
+        //         this.isMoeTouchingGround = true;
+
+        //     if (this.checkBodies(bodyA, bodyB, "June", "Obstacle"))
+        //         this.isJuneTouchingObstacle = true;
+        //     else
+        //         this.isJuneTouchingObstacle = false;
+
+        // }, this);
+
+        // this.keys = this.input.keyboard.addKeys('W,S,A,D,B');
+        // this.createAnimations();
     }
 
     checkBodies(bodyA, bodyB, label1, label2) {
@@ -85,38 +85,38 @@ class GameScene extends Phaser.Scene {
     }
 
     update() {
-        var distance = Math.abs(this.moe.x - this.june.x);
+        // var distance = Math.abs(this.moe.x - this.june.x);
 
-        if (this.keys.A.isDown) {
-            this.moe.setVelocityX(-3);
-            this.moe.anims.play('moeLeft', true);
-            if (distance < 300) {
-                this.june.setVelocityX(-3);
-                this.june.anims.play('juneLeft', true);
-            }
+        // if (this.keys.A.isDown) {
+        //     this.moe.setVelocityX(-3);
+        //     this.moe.anims.play('moeLeft', true);
+        //     if (distance < 300) {
+        //         this.june.setVelocityX(-3);
+        //         this.june.anims.play('juneLeft', true);
+        //     }
 
-        } else if (this.keys.D.isDown) {
-            this.moe.setVelocityX(3);
-            this.moe.anims.play('moeRight', true);
-            if (distance < 300) {
-                if (this.isJuneTouchingObstacle == false) {
-                    this.june.setVelocityX(3);
-                    this.june.anims.play('juneRight', true);
-                }
-            }
-        } else {
-            this.moe.anims.play('moeTurn');
-            this.june.anims.play('juneTurn');
-            //this.moe.setVelocityX(0); 
-        }
+        // } else if (this.keys.D.isDown) {
+        //     this.moe.setVelocityX(3);
+        //     this.moe.anims.play('moeRight', true);
+        //     if (distance < 300) {
+        //         if (this.isJuneTouchingObstacle == false) {
+        //             this.june.setVelocityX(3);
+        //             this.june.anims.play('juneRight', true);
+        //         }
+        //     }
+        // } else {
+        //     this.moe.anims.play('moeTurn');
+        //     this.june.anims.play('juneTurn');
+        //     //this.moe.setVelocityX(0); 
+        // }
 
-        if (this.keys.W.isDown && this.isMoeTouchingGround) {
-            this.moe.setVelocityY(-10);
-            this.isMoeTouchingGround = false;
-        }
+        // if (this.keys.W.isDown && this.isMoeTouchingGround) {
+        //     this.moe.setVelocityY(-10);
+        //     this.isMoeTouchingGround = false;
+        // }
 
-        this.cameras.main.scrollX = this.moe.x - 500;
-        this.cameras.main.scrollY = this.moe.y - 200;
+        // this.cameras.main.scrollX = this.moe.x - 500;
+        // this.cameras.main.scrollY = this.moe.y - 200;
 
     }
 
@@ -172,7 +172,7 @@ var config = {
     height: 600,
     backgroundColor: 'rgb(255, 255, 255)',
     physics: {
-        default: 'matter',
+        default: 'arcade',
         matter: {
             debug: true,
             lineColor: 'rgb(255, 0, 0)',
