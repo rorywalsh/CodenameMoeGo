@@ -1,4 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Csound and Phaser 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.22.0/phaser.min.js" integrity="sha256-opIOArWpfmA6kZLZN7Jj7tSbFeIdvafkfZsI8p17OTc=" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        class GameScene extends Phaser.Scene {
+
+            constructor(config) {
+                super(config);
+            }
+
+
+            preload() {
+                this.load.image('world', 'assets/gameWorldLowRes1.png');
+            }
+
+
+            create() {
+                this.add.image(1000, 0, 'world');
+            }
+
+
+            update() {}
+        };
+
+        //basic config for game
+        var config = {
+            type: Phaser.CANVAS,
+            width: 960,
+            height: 600,
+            backgroundColor: 'rgb(0, 255, 255)',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: {
+                        y: 300
+                    },
+                    debug: false
+                }
+            },
+            scene: GameScene
+        };
+
+
+        var game = new Phaser.Game(config);
+    </script>
+
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -47,4 +109,4 @@
     </script>
 </body>
 
-</html>
+</html> -->
