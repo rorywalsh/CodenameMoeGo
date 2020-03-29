@@ -13,7 +13,7 @@ class GameScene extends Phaser.Scene {
 
         this.load.spritesheet('Moe', 'assets/MoeWalk.png', { frameWidth: 63, frameHeight: 96 });
         this.load.spritesheet('June', 'assets/JuneWalk.png', { frameWidth: 77, frameHeight: 96 });
-        this.load.image('gameWorld', 'assets/gameWorldLowRes.png');
+        this.load.image('gameWorld', 'assets/gameWorldLowRes1.png');
 
     }
 
